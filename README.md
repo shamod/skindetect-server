@@ -1,5 +1,15 @@
 # Skindetect Server
 
-Server side code for SkinDetect
+## Install dependencies
 
-run `python run.py` and change the IP on the client side to your local IP for login and registration to work
+```bash
+pip install -r requirements.txt
+```
+
+## Run local SkinDetect dev server
+
+```bash
+python run.py
+```
+
+Change the client-side IP to your local address for the login and registration to work.
