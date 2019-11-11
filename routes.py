@@ -57,6 +57,6 @@ def register():
   db.session.commit()
 
   msg = {"status": {"type": "success",
-                    "message": "You have been regsitered"}}
+                    "message": "You have been registered"}}
 
   return jsonify(msg)
