@@ -5,6 +5,8 @@ import os
 
 app = Flask(__name__) 
 
+# app.config.from_object('app.config')
+
 currentDirectory = os.getcwd() 
 databasePath = os.path.join(currentDirectory , "database.db")
 

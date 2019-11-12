@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify
 from app import app, db
 from models import User
 
+import stripe
+stripe.api_key = 'sk_test_8etfHlIc6y258rcKhgdaqO1l'
 
 @app.route('/')
 def home():
@@ -60,3 +62,33 @@ def register():
                     "message": "You have been registered"}}
 
   return jsonify(msg)
+
+
+
+@app.route('/charge', methods=['POST'])
+def charge():
+    stripeToken = request.json['stripeToken']
+    success = False
+    msg = ''
+    try:
+        # if not current_user.stripeId:
+        customer = stripe.Customer.create(email='shamod@gmail.com', source=stripeToken)
+        # current_user.stripeId = customer['id']
+
+        charge = stripe.Charge.create(
+            customer=customer['id'],
+            amount=1000,
+            currency='usd',
+            description="10 Skin Care Credits"
+        )
+        # if charge.paid:
+            # current_user.add_credits(10)
+            # db.session.commit()
+        msg = { success: True }
+        # else:
+        #     raise Exception('Charge Not Made')
+    except Exception as e:
+        print(f"Error processing payment: {e}")
+        msg = { success: False }
+
+    return jsonify(msg)
