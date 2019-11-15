@@ -13,4 +13,5 @@ databasePath = os.path.join(currentDirectory , "database.db")
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+databasePath
 db = SQLAlchemy(app) 
 
-import routes , models 
+import routes , models, diagnose
+import predictive_api 
