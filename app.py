@@ -14,4 +14,3 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+databasePath
 db = SQLAlchemy(app) 
 
 import routes , models, diagnose
-import predictive_api 
